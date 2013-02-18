@@ -1,511 +1,88 @@
-/*  
-Theme Name: Berkman Front Page
-Theme URI: 
-Description: Two column theme based on Harvard colors. 
-Version: 1.0
-Author: Boris Anthony (modified by Danny Silverman)
-Author URI: http://helppush.org
-
-Theme last updated: 2006-04-11
+/*
+Theme Name:     Berkman Network Frontpage
+Theme URI:      https://github.com/berkmancenter/blog-network-frontpage
+Description:    The front page for the Berkman blog network.
+Author:         The Berkman Center for Internet and Society
+Author URI:     https://cyber.law.harvard.edu/
+Template:       twentytwelve
+Version:        0.1.0
 */
 
+@import url("../twentytwelve/style.css");
 
-/* Basics and Typography */
-body {
-	margin: 0; padding: 0;
-	color: #333;
-	background: #F5F5E7;
-	text-align: center;
-	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, sans-serif;
-	}
-p {
-	line-height: 1.5em;
-	margin: 10px 0;
-	}
-ol, ul {
-	line-height: 1.1em;
-	}
-h1, h2, h3, h4, h5, h6 {
-	margin: 0;
-	font-family: "Lucida Grande", Tahoma, Arial, sans-serif;
-	color: #996; 
-	}
-h1, h2 {
-	font-size: 14pt;
-	}
-h3 {
-	font-size: 13pt;
-	}
-h4 {
-	font-size: 12pt;
-	}
-a {
-	text-decoration: none;
-	}
-a:link {
-	color: #c33;
-	}
-a:visited {
-	color: #c33;
-	}
-a:hover, a:active {
-	color: #900;
-	}
-input, textarea, select {
-	border: 1px solid #C1C0B5;
-	background-color: #FAFAF0;
-	color: #333;
-	font-size: 1em;
-	font-family: "Lucida Sans Unicode", Tahoma, Arial, sans-serif;
-	}
-blockquote {
-	margin: 0 20px;
-	padding: 0 20px;
-	border-left: 4px solid #E8E7D0;
-	font-size: 9pt;
-	}
-code {
-	font-family: monospace;
-	color: #666;
-	}
-form, img {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	}
-.small {
-	font-size: 0.9em;
-	color: #999;
-	}
-
-
-
-/* Layout */
-
-#wrapper {
-	margin: 0 auto;
-	width: 750px;
-	background-color: #FFF;
-	text-align: left;
-	}
-#header {
-	padding: 20px 0 10px 20px;
-	background: #900 url('images/VE-RI-TAS-bg.gif') left -80px;
-	border-bottom: 1px solid #fff;
-	}
-#middle {
-	border-top: 10px solid #996;
-	margin: 0;
-	padding: 0 0 20px 0;
-	}
-#content {
-	float: left;
-	padding: 20px 20px;
-	width: 480px;
-	} 
-
-#content.widecolumn {
-	float: left;
-	padding: 20px 20px;
-	width: 680px;
+html, body {
+    background-color: #FFF;
 }
 
-#sidebar {
-	float: right;
-	margin: 0 0 0 0;
-	padding: 0 0 0 10px;
-	width: 190px;
-	}
+a:hover {
+    color: #8F0011 !important;
+}
 
-#footer {
-	clear: both;
-	margin: 0;
-	padding: 5px 0 20px 0;
-	background-color: #F5F5E7;
-	border-top: 10px solid #996;
-	}
+a:active {
+    color: #7D000E !important;
+}
 
+#page {
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: none;
+    position: relative;
+    
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
-/* Header Styles */
-#header h1 {
-	margin: 0;
-	color: #fff;
-	font-family: 'Georgia', 'Times New Roman', serif;
-	font-size: 24pt;
-	font-weight: normal;
-	margin-bottom: 6pt;
-	}
-#header h1 a {
-	text-decoration: none;
-	color: #fff;
-	}
-#header .description {
-	color: #fff;
-	font-size: 10pt;
-	}
-	
-/* Sidebar Styles */
-
-#sidebar ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	}
-#sidebar ul li {
-	margin: 0;
-	padding: 0;
-	}
-#sidebar h2 {
-	margin: 0;
-	padding: 0 0 5px 10px;
-	font-size: 10pt;
-	}
-#sidebar h2 .logout {
-	font-size: 8pt;
+#masthead {
+    padding: 10px 0;
+    border-bottom: 1px solid #8F0011;
 }
-div.start a {
-	display:block;
-	padding: 10px 0 10px 5px;
-	font-size: 12pt;
-	font-weight: bold;
-	color: fff;
-	background: #900;
-	text-align: center;
-	border: 1px solid #900;
-	margin-top: 10px;
-}
-div.start a:link {
-	color: #fff;
-	border-color: #900;
-	border-style: solid;
-}
-div.start a:visited {
-	color: #fff;
-	border-color: #900;
-	border-style: solid;
-}
-div.start a:hover {
-	color: #900;
-	background: #cc9;
-	border-color: #900;
-	border-style: solid;
-}
-#sidebar ul li.start a {
-	display:block;
-	padding: 10px 0 10px 5px;
-	font-size: 12pt;
-	font-weight: bold;
-	color: fff;
-	background: #900;
-	text-align: center;
-	border: 1px solid #900;
-	}
-	#sidebar ul li.start a:link {
-		color: #fff;
-		}
-	#sidebar ul li.start a:visited {
-		color: #fff;
-		}
-	#sidebar ul li.start a:hover {
-		color: #900;
-		background: #cc9;
-		}
-#sidebar ul #support {
-	background: #996 url('images/pages-base.gif') bottom no-repeat;
-	padding: 5px 0 10px 0;
-	}
-	#sidebar ul #support a {
-		color: #600;
-		}
-#sidebar ul #blogs {
-	background: #cc9 url('images/archs-base.gif') bottom no-repeat;
-	padding: 5px 0 10px 0;
-	}
-#sidebar ul #blogs a {
-	display: inline;
-}
-#sidebar ul #blogs .admin-link {
-	float: right;
-	margin-right: 8px;
-}
-#sidebar ul #terms {
-	padding: 5px 0 10px 0;
-	}
-#sidebar #support h2 {
-	color: #fff;
-	padding-top: 3px;
-	padding-bottom: 1px;
-	}
-#sidebar #blogs h2 {
-	color: #663;
-	}
-#sidebar #terms h2 {
-	color: #663;
-	}
-#sidebar ul li ul {
-	margin: 0;
-	padding: 0 0 0 10px;
-	font-size: 8pt;
-	}
-#sidebar ul li ul li {
-	padding: 0 0 4px 0;
-	}
-#sidebar ul li ul li a {
-	display:block;
-	margin: 0; padding: 0;
-	font-weight: bold;
-	}
-#sidebar h3, .provided h3 {
-	margin: 0;
-	padding: 10px 0 0 10px;
-	color: #996;
-	font-size: 7pt;
-	font-weight: normal;
-	}
-h3.updated {
-	font-size: 11pt;
-	padding-bottom: 4px;
-}
-.provided {
-	float: right;
-	width: 200px;
-	margin: 15px 0 0 0;
-	}
-	.provided h3  {
-		margin: 0;
-		padding: 10px 0 0 0;
-		color: #996;
-		font-size: 9pt;
-		font-weight: normal;
-		}
-	.provided p  {
-		margin: 0;
-		padding: 0;
-		color: #996;
-		font-size: 7pt;
-		font-weight: bold;
-		}
-
-/* Blog */
-.arch-title {
-	margin: 0 0 10px 0;
-	padding: 0 0 10px 0;
-	text-align: center;
-	font-size: 10pt;
-	font-family: 'Georgia', 'Times New Roman', serif;
-	letter-spacing: 2pt;
-	}
-
-.post {
-	margin: 0;
-	overflow: hidden;
-	}
-.single .post {
-	padding-bottom: 10px;
-	}
-.posttitle {
-	float:left;
-	font-family: 'Georgia', 'Times New Roman', serif;
-	font-size: 14pt;
-	font-weight: normal;
-	margin: 0;
-	width: 430px;
-	color: #FFF;
-	overflow: auto;
-	padding: 0 0 0 12px;
-	background: url('images/permalink.gif') no-repeat center left;
-	/* Width and overflow to clear '.posttitle a' */
-	}
-.pagetitle {
-	font-family: 'Georgia', 'Times New Roman', serif;
-	font-size: 14pt;
-	font-weight: normal;
-	margin: 0;
-	padding: 0 0 0 0;
-	}
-.posttitle a {
-	float: left;
-	padding: 0;
-	}
-.posttitle a:link,
-.posttitle a:visited {
-	color: #900;	
-	}
-.posttitle a:hover,
-.posttitle a:active {
-	color: #900;
-	}
-.post .discuss {
-	float: right;
-	margin: 0;
-	padding: 0;
-	}
-	.commentslink {
-		margin: 0;
-		padding: 0 0 0 15px;
-		background: url('images/commentslink.gif') no-repeat center left;
-		}
-	.no-comment {
-		font-size: 9pt;
-		color: #cc9;
-		}
-.postmeta {
-	clear: both;
-	margin-top: 0;
-	padding-top: 1px;
-	font-size: 7pt;
-	color: #999;
-	border-top: 1px solid #cc9;
-	}
-.postentry {
-	font-size: 9pt;
-	}
-/* 
-.postentry ul {
-	margin: 0;
-}
-*/
-.postentry li {
-	margin-left: -20px;
-	line-height: 1.5;
-}
-.postentry a:hover { border-bottom: 1px dotted #996; }
-.postentry a:link { color: #663; }
-.postentry a:hover { color: #900; border-bottom: 1px dotted #900; }
-.postfeedback {
-	width: 100%;
-	text-align: right;
-	}
-.permalink {
-	font-size: 8pt;
-	margin: 0;
-	padding: 0 0 0 12px;
-	background: url('images/permalink.gif') no-repeat center left;
-	}
-.blogosphere {
-	font-size: 8pt;
-	}
-.blogosphere dt {
-	clear:left;
-	float:left;
-	width: 80px;
-	margin: 0 5px 4px 0;
-	text-align: right;
-	color: #996;
-	}
-.blogosphere dd {
-	margin: 0 0 4px 0;
-	}
-	.blogosphere img.socialbkmark {
-		margin: 0 4px;
-		}
-.nav {
-	font-size: 8pt;
-	padding: 10px 0 40px 0;
-	border-top: 1px solid #e8e7d0;
-	}
-.nav .prev {
-	float:left;
-	}
-.nav .next {
-	float:right;
-	}
 
 
-/* Comments */
-h2#comments, #postcomment {
-	font-family: 'Georgia', 'Times New Roman', serif;
-	font-size: 12pt;
-	font-style: italic;
-	}
-#commentlist {
-	margin: 1.2em 0;
-	padding: 0;
-	list-style-type: none;
-	}
-#commentlist li {
-	width: auto;
-	border-top: 4px solid #e8e7d0;
-	border-bottom: 1px solid #e8e7d0;
-	margin: 0 0 0 0;
-	padding: 1px 10px 20px 10px;
-	background-color: #fff;
-	}
-.alt {
-	background-color: #F1F1E3 !important;
-	}
-.commenttitle {
-	margin: 4px 0 0 0;
-	font-size: 9pt;
-	float:left;
-	}
-.commentmeta {
-	float: right;
-	margin: 5px 0 0 0;
-	font-size: 7pt;
-	color: #999;
-	}
-.comment-text {
-	clear: both;
-	font-size: 8pt;
-	border-top: 1px dotted #eed;
-	}
-.alt .comment-text {
-	border-top: 1px dotted #fff;
-	}
-.comment-text p {
-	font-size: 8pt;
-	}
-	.cc {
-		float:right;
-		margin: 10px 5px 15px 15px;
-		padding: 0 0 15px 0;
-		font-size: 40pt;
-		font-family: 'Georgia', 'Times New Roman', serif;
-		font-style: italic;
-		color: #eed;
-		}
-	.alt .cc {
-		color: #fff;
-		}
+hgroup {
+    display: inline-block;
+    vertical-align: baseline;
+}
 
-#commentform {
-	}
-#commentform p {
-	margin: 0;
-	padding: 0;
-	font-size: 8pt;
-	font-weight: bold;
-	}
-#commentform label {
-	font-size: 8pt;
-	font-weight: bold;
-	}
-#commentform label .note {
-	font-size: 7pt;
-	font-weight: normal;
-	}
-#commentform input {
-	font-size: 9pt;
-	padding: 2px;
-	}
-#commentform #comment {
-	font-size: 9pt;
-	width: 100%;
-	height: 200px;
-	padding: 2px;
-	}
-#commentform #submit {
-	font-size: 10pt;
-	font-weight: bold;
-	width: 100%;
-	padding: 4px;
-	}
+.site-description {
+    display: none;
+}
 
-/* Footer Styles */
-#footer p {
-	margin: 0;
-	padding: 0;
-	font-size: 7pt;
-	text-align: right;
+nav.main-navigation {
+    display: inline-block;
+    margin-top: 0;
+    vertical-align: baseline;
+}
+
+nav.nav-right {
+    display: inline-block;
+    margin-top: 10px;
+    vertical-align: baseline;
+    float: right;
+}
+
+.main-navigation ul.nav-menu, .main-navigation div.nav-menu > ul {
+    border: none;
+}
+
+footer#colophon {
+    text-align: center;
+    height: 100px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: right;
+}   
+
+footer#colophon:before {
+    content: "";
+    width: 180px;
+    height: 40px;
+    display: inline-block;
+    background: url("images/Berkman-HU-full-180px.png") center center no-repeat;
+    float: left;
+}
+
+.main-navigation li {
+    margin: 0 0 0 20px;
 }
