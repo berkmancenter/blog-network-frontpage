@@ -46,6 +46,8 @@
 		</nav><!-- #site-navigation -->
 
 		<nav class="nav-right">
+			<button type="button">Sign In</button>
+			<button type="button">Register</button>
 			<input type="text" placeholder="Search" />
 		</nav>
 
