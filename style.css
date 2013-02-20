@@ -17,16 +17,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .entry-header {
-    margin: 10px 0 20px;
+    margin-bottom: 0;
 }
 
 .entry-header .entry-title{
+    margin: 20px 0;
     font-size: 20px;
     font-weight: bold;
 }
 
 .entry-content h2 {
-    margin: 10px 0;
+    line-height: 1.2;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
 }
 
@@ -79,7 +83,7 @@ a:active {
     padding: 10px 20px;
 }
 
-.entry-title {
+#post-4 .entry-title {
     display: none;
 }
 
@@ -140,4 +144,21 @@ footer#colophon:before {
 
 .main-navigation li {
     margin: 0 0 0 20px;
+}
+
+.page-header {
+margin-bottom: 0;
+padding-bottom: 0;
+border-bottom: none;
+}
+
+.page-title {
+    margin: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #8F0011;
+}
+
+li.gfield {
+    margin: 0;
 }
