@@ -1,4 +1,8 @@
 <?php
+
+require("includes/showcase.php");
+require("includes/directory.php");
+
 add_action( 'init', 'register_my_menus' );
 
 function register_my_menus() {
