@@ -12,7 +12,6 @@
 function network_showcase_handler( $atts ) {
     extract( shortcode_atts( array(
         'number' => '5'
-
     ), $atts ) );
 
     return "";
