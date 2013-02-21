@@ -48,7 +48,8 @@
 		<nav class="nav-right">
 			<button type="button">Sign In</button>
 			<button type="button">Register</button>
-			<input type="text" placeholder="Search" />
+			
+			<?php get_search_form(true); ?>
 		</nav>
 
 		<?php $header_image = get_header_image();

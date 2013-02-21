@@ -162,3 +162,7 @@ border-bottom: none;
 li.gfield {
     margin: 0;
 }
+
+#searchform {
+    display: inline-block;
+}
