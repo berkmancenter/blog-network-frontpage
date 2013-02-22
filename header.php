@@ -47,8 +47,8 @@
 
 		<nav class="nav-right">
 			<button type="button">Sign In</button>
-			<button type="button">Register</button>
-			
+			<input type=button onClick="parent.location='<?php echo site_url('wp-signup.php','login') ?>'" value='Register'>
+						
 			<?php get_search_form(true); ?>
 		</nav>
 
