@@ -166,3 +166,19 @@ li.gfield {
 #searchform {
     display: inline-block;
 }
+
+#content.widecolumn {
+    margin: 20px 0 0;
+}
+
+p.submit {
+    margin: 0;
+}
+
+.gform_wrapper .top_label input.medium {
+    padding: 6px;
+}
+
+.gform_wrapper .top_label textarea.textarea {
+    padding: 6px;
+}
