@@ -55,8 +55,9 @@ function network_directory_handler( $atts ) {
     $dataTable .= "<table class='datatable'>";
         $dataTable .= "<thead>";
             $dataTable .= "<tr>";
-                $dataTable .= "<th>Name</th>";
+                $dataTable .= "<th>Blog</th>";
                 $dataTable .= "<th>Description</th>";
+                $dataTable .= "<th>Author</th>";
                 $dataTable .= "<th>Created</th>";
                 $dataTable .= "<th>Updated</th>";
             $dataTable .= "</tr>";
@@ -65,9 +66,18 @@ function network_directory_handler( $atts ) {
         $dataTable .= "<tbody>";
 
             foreach ($blogs as $blog){
+
+                $blogusers = get_users(array(
+                    'blog_id' => $blog,
+                    'who' => 'authors'
+                ));
+
                 $dataTable .= "<tr>";
                     $dataTable .= "<td>" . "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>" . "</td>";
                     $dataTable .= "<td>" . get_blog_option($blog, "blogdescription") . "</td>";
+                    foreach ($blogusers as $user) {
+                        $dataTable .= "<td>" . "<div><a href='" . $user->user_url . "'>" . $user->display_name . "</a></div>" . "</td>";
+                    }
                     $dataTable .= "<td>" . get_blog_details($blog)->registered . "</td>";
                     $dataTable .= "<td>" . get_blog_details($blog)->last_updated . "</td>";
                 $dataTable .= "</tr>";
