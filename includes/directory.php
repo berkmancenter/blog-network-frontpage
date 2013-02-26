@@ -27,7 +27,7 @@ function network_directory_handler( $atts ) {
 
     wp_enqueue_script(
         'datatables_js',
-        get_stylesheet_directory_uri() . '/datatables/js/jquery.dataTables.min.js',
+        get_stylesheet_directory_uri() . '/vendor/datatables/js/jquery.dataTables.min.js',
         array('jquery')
     );
 
@@ -39,7 +39,7 @@ function network_directory_handler( $atts ) {
 
     wp_enqueue_style(
         'datatables_css',
-        get_stylesheet_directory_uri() . '/datatables/css/jquery.dataTables.css'
+        get_stylesheet_directory_uri() . '/vendor/datatables/css/jquery.dataTables.css'
     );
 
     // Get MySQL data
