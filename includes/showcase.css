@@ -12,3 +12,9 @@
     width: 200px;
     display: inline-block;
 }
+
+.showcase_authors {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
