@@ -56,11 +56,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a:hover {
-    color: #8F0011 !important;
+    color: #9e1b2e;
 }
 
 a:active {
-    color: #7D000E !important;
+    color: #7D000E;
 }
 
 #page {
@@ -77,10 +77,38 @@ a:active {
 
 #masthead {
     border-bottom: 1px solid #8F0011;
+    /* fallback */
+    background-color: #4a0c15;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    /* Safari 4-5, Chrome 1-9 */
+    /* Can't specify a percentage size? Laaaaaame. */
+    background: -webkit-gradient(radial, center center, 0, center center, 460, from(#a51c30), to(#4a0c15));
+
+    /* Safari 5.1+, Chrome 10+ */
+    background: -webkit-radial-gradient(circle, #a51c30, #4a0c15);
+
+    /* Firefox 3.6+ */ 
+    background: -moz-radial-gradient(circle, #a51c30, #4a0c15);
+
+    /* IE 10 */ 
+    background: -ms-radial-gradient(circle, #a51c30, #4a0c15);
+
+    /* Opera cannot do radial gradients yet */
 }
 
 #masthead.site-header {
     padding: 10px 20px;
+}
+
+.site-header h1 a {
+    color: #ffffff;
+}
+
+.site-header h1 a:hover {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 #post-4 .entry-title {
@@ -120,11 +148,89 @@ nav.nav-right {
     float: right;
 }
 
+nav.nav-right button[type="button"], input[type="button"] {
+    background: #f5f5e7;
+    border: 1px solid #f5f5e7;
+    color: #9e1b2e;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+nav.nav-right button[type="button"]:hover, input[type="button"]:hover {
+    background: #9e1b2e;
+    border: 1px solid #f5f5e7;
+    color: #f5f5e7;
+    font-weight: bold;
+}
+
+nav.nav-right button[type="button"]:active, input[type="button"]:active {
+    background: #9e1b2e;
+    border: 1px solid #f5f5e7;
+    color: #f5f5e7;
+    font-weight: bold;
+}
+
+nav.nav-right input[type="submit"] {
+    border: 1px solid #f5f5e7;
+    color: #333333;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+nav.nav-right input[type="submit"]:hover {
+    background: #333333;
+    border: 1px solid #f5f5e7;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+nav.nav-right input[type="submit"]:active {
+    background: #333333;
+    border: 1px solid #f5f5e7;
+    color: #ffffff;
+    font-weight: bold;
+}
+
 .main-navigation ul.nav-menu, .main-navigation div.nav-menu > ul {
     border: none;
 }
 
+.main-navigation li a {
+    color: #ffffff;
+}
+
+.main-navigation li a:hover {
+    color: #c0c0c0;
+    text-decoration:underline;
+}
+
+.main-navigation .current-menu-item > a, .main-navigation .current-menu-ancestor > a, .main-navigation .current_page_item > a, .main-navigation .current_page_ancestor > a {
+    color: #c0c0c0;
+    text-decoration:underline;
+    font-weight: bold;
+}
+
+.main-navigation li ul li a {
+    background: #9e1b2e;
+    border: 1px solid #ededed;
+    display: block;
+    font-size: 11px;
+    font-size: 0.785714286rem;
+    line-height: 2.181818182;
+    padding: 8px 10px;
+    padding: 0.571428571rem 0.714285714rem;
+    width: 180px;
+    width: 12.85714286rem;
+    white-space: normal;
+}
+
+.main-navigation li ul li a:hover {
+    background: #ffa88d;
+
+}
+
 footer#colophon {
+    background-color: #333333;
     padding: 20px 20px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -153,9 +259,10 @@ border-bottom: none;
 }
 
 .page-title {
-    margin: 10px 20px;
+    margin: 0px;
     font-size: 20px;
     font-weight: bold;
+    line-height: normal;
     color: #8F0011;
 }
 
@@ -181,4 +288,105 @@ p.submit {
 
 .gform_wrapper .top_label textarea.textarea {
     padding: 6px;
+}
+
+#respond {
+    margin: 10px;
+}
+
+.nav-single + .comments-area, #comment-nav-above {
+    margin: 0 20px;
+}
+
+.nav-previous, .previous-image {
+    margin-top: 10px;
+    margin-left: 20px;
+    float: left;
+    width: 50%;
+}
+
+.nav-next, .next-image {
+    margin-top: 10px;
+    margin-right: 20px;
+    float: right;
+    text-align: right;
+    width: auto;
+}
+
+.site-content nav {
+    margin-bottom: 10px;
+    clear: both;
+    line-height: 2;
+    overflow: hidden;
+}
+
+.archive-header, .page-header {
+    margin: 20px;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.archive-title {
+    margin: 0;
+    font-family: "Lucida Grande", Tahoma, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: normal;
+    text-transform: none;
+    color: #996;
+}
+
+.comments-area article {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #8F0011;
+}
+
+.comments-title {
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-size: 1.142857143rem;
+    line-height: 1.5;
+    font-weight: normal;
+    color: #8F0011;
+}
+
+p.form-submit input[type="submit"] {
+    color: #333333;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+p.form-submit input[type="submit"]:hover {
+    background: #333333;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+p.form-submit input[type="submit"]:active {
+    background: #333333;
+    border: 1px solid #f5f5e7;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+div.gform_footer input[type="submit"] {
+    color: #333333;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+div.gform_footer input[type="submit"]:hover {
+    background: #333333;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+div.gform_footer input[type="submit"]:active {
+    background: #333333;
+    border: 1px solid #f5f5e7;
+    color: #ffffff;
+    font-weight: bold;
 }
