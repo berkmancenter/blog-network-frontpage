@@ -64,7 +64,7 @@ function network_showcase_handler( $atts ) {
                 ));
             $first_author = true;
 
-            $showcase_html .= "<div class='showcase_box'>";
+            $showcase_html .= "<div class='showcase_item'><div class='showcase_box'>";
                 $showcase_html .= "<div>" . "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>" . "</div>";
                 $showcase_html .= "<div class='showcase_authors'>By ";
                     foreach ($blogusers as $user) {
@@ -76,9 +76,9 @@ function network_showcase_handler( $atts ) {
                     }
                 $showcase_html .= "</div>";
                 $showcase_html .= "<div>" . get_blog_option($blog, "blogdescription") . "</div>";
-                $showcase_html .= "<div>Registered " . get_blog_details($blog)->registered . "</div>";
-                $showcase_html .= "<div>Updated " . get_blog_details($blog)->last_updated . "</div>";
-            $showcase_html .= "</div>";
+                $showcase_html .= "<div>Created " . date("n/j/Y", strtotime(get_blog_details($blog)->registered)) . "</div>";
+                $showcase_html .= "<div>Last Updated " . date("n/j/Y", strtotime(get_blog_details($blog)->last_updated)) . "</div>";
+            $showcase_html .= "</div></div>";
         }
     $showcase_html .= "</div>";
 

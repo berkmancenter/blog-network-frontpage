@@ -79,7 +79,7 @@ function network_directory_handler( $atts ) {
 
                 $dataTable .= "<tr>";
                     $dataTable .= "<td>" . "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>" . "</td>";
-                    $dataTable .= "<td class='directory_description' title='" . get_blog_option($blog, "blogdescription") . "'>" . get_blog_option($blog, "blogdescription") . "</td>";
+                    $dataTable .= "<td><div class='directory_description' title='" . get_blog_option($blog, "blogdescription") . "'>" . get_blog_option($blog, "blogdescription") . "</div></td>";
                     foreach ($blogusers as $user) {
                         $dataTable .= "<td>" . "<div><a href='" . $user->user_url . "'>" . $user->display_name . "</a></div>" . "</td>";
                     }
