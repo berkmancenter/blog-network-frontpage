@@ -41,6 +41,10 @@ function network_showcase_handler( $atts ) {
     // Get blogs to show 
 
     // TODO - Add filters
+
+    // Newest: "SELECT blog_id FROM " . $wpdb->base_prefix . "blogs ORDER BY registered DESC LIMIT 5"
+    // Recently Updated: "SELECT blog_id FROM " . $wpdb->base_prefix . "blogs ORDER BY last_updated DESC LIMIT 5"
+
     // TODO - Use number attribute ($number) as limit
 
     $blogs = $wpdb->get_col(
@@ -56,7 +60,7 @@ function network_showcase_handler( $atts ) {
 
             $blogusers = get_users(array(
                     'blog_id' => $blog,
-                    'who' => 'authors'
+                    'role' => 'administrator'
                 ));
             $first_author = true;
 
