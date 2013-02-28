@@ -390,3 +390,7 @@ div.gform_footer input[type="submit"]:active {
     color: #ffffff;
     font-weight: bold;
 }
+
+.category-news .archive-title {
+    text-transform: capitalize;
+}
