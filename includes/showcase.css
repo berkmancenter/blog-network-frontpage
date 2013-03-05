@@ -23,3 +23,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.showcase_links {
+    text-align: right;
+}
+
+.showcase_links a {
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.showcase_links a.current_showcase_section_link {
+    text-decoration: underline;
+}

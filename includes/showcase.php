@@ -16,7 +16,7 @@ function network_showcase_handler( $atts ) {
     // Extract attributes
 
     extract( shortcode_atts( array(
-        'number' => '5'
+        'number' => '30'
     ), $atts ) );
 
     // Echo necessary scripts
@@ -40,45 +40,66 @@ function network_showcase_handler( $atts ) {
 
     // Get blogs to show 
 
-    // TODO - Add filters
+    $filters = array(
+        "Newest" => "SELECT blog_id FROM " . $wpdb->base_prefix . "blogs ORDER BY registered DESC LIMIT %d",
+        "Recently Updated" => "SELECT blog_id FROM " . $wpdb->base_prefix . "blogs ORDER BY last_updated DESC LIMIT %d",
+        "Popular" => "SELECT blog_id FROM " . $wpdb->base_prefix . "blog_network_stats ORDER BY total_users DESC LIMIT %d",
+        "Active" => "SELECT blog_id FROM " . $wpdb->base_prefix . "blog_network_stats ORDER BY recent_posts_and_comments DESC LIMIT %d"
+    );
 
-    // Newest: "SELECT blog_id FROM " . $wpdb->base_prefix . "blogs ORDER BY registered DESC LIMIT 5"
-    // Recently Updated: "SELECT blog_id FROM " . $wpdb->base_prefix . "blogs ORDER BY last_updated DESC LIMIT 5"
+    $filter_results = array();
 
-    // TODO - Use number attribute ($number) as limit
-
-    $blogs = $wpdb->get_col(
-            $wpdb->prepare("SELECT blog_id FROM " . $wpdb->base_prefix . "blogs LIMIT 5", array())
+    foreach ($filters as $key => $sql){
+        $filter_results[$key] = $wpdb->get_col(
+            $wpdb->prepare($sql, array($number))
         );
+    }
 
     // Prepare HTML
 
     $showcase_html = "";
 
     $showcase_html .= "<div class='showcase'>";
-        foreach ($blogs as $blog){
+        $showcase_html .= "<div class='showcase_links'>";
+            $first_link_class = "current_showcase_section_link";
+            foreach ($filter_results as $label => $blogs){
+                $showcase_html .= "<a href='#' class='" . $first_link_class . "' onclick='return showcase_open(\".showcase-" . strtolower(str_replace(" ", "-", $label)) . "\", this)'>" . $label . "</a>";
+                $first_link_class = "";
+            }
+        $showcase_html .= "</div>";
 
-            $blogusers = get_users(array(
-                    'blog_id' => $blog,
-                    'role' => 'administrator'
-                ));
-            $first_author = true;
+        $show_item = "display: block;";
 
-            $showcase_html .= "<div class='showcase_item'><div class='showcase_box'>";
-                $showcase_html .= "<div>" . "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>" . "</div>";
-                $showcase_html .= "<div class='showcase_authors'>By ";
-                    foreach ($blogusers as $user) {
-                        if (!$first_author){
-                            $showcase_html .= ", ";
+        foreach ($filter_results as $label => $blogs){
+            $showcase_html .= "<div style='" . $show_item . "' class='showcase_section showcase-" . strtolower(str_replace(" ", "-", $label)) . "'>";
+            foreach ($blogs as $blog){
+
+                $blogusers = get_users(array(
+                        'blog_id' => $blog,
+                        'role' => 'administrator'
+                    ));
+                $first_author = true;
+
+                $showcase_html .= "<div class='showcase_item'><div class='showcase_box'>";
+                    $showcase_html .= "<div>" . "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>" . "</div>";
+                    $showcase_html .= "<div class='showcase_authors'>By ";
+                        foreach ($blogusers as $user) {
+                            if (!$first_author){
+                                $showcase_html .= ", ";
+                            }
+                            $first_author = false;
+                            $showcase_html .= "<a href='" . $user->user_url . "'>" . $user->display_name . "</a>";
                         }
-                        $first_author = false;
-                        $showcase_html .= "<a href='" . $user->user_url . "'>" . $user->display_name . "</a>";
-                    }
-                $showcase_html .= "</div>";
-                $showcase_html .= "<div>" . get_blog_option($blog, "blogdescription") . "</div>";
-                $showcase_html .= "<div>Created " . date("n/j/Y", strtotime(get_blog_details($blog)->registered)) . "</div>";
-                $showcase_html .= "<div>Last Updated " . date("n/j/Y", strtotime(get_blog_details($blog)->last_updated)) . "</div>";
-            $showcase_html .= "</div></div>";
+                    $showcase_html .= "</div>";
+                    $showcase_html .= "<div>" . get_blog_option($blog, "blogdescription") . "</div>";
+                    $showcase_html .= "<div>Created " . date("n/j/Y", strtotime(get_blog_details($blog)->registered)) . "</div>";
+                    $showcase_html .= "<div>Last Updated " . date("n/j/Y", strtotime(get_blog_details($blog)->last_updated)) . "</div>";
+                $showcase_html .= "</div></div>";
+            }
+            $showcase_html .= "</div>";
+
+            $show_item = "display: none;";
+
         }
     $showcase_html .= "</div>";
 
