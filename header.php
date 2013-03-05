@@ -48,18 +48,18 @@
 		<nav class="nav-right">
 			<?php global $current_user, $blog_id;
 			if (!is_user_logged_in()) { ?>
-				<a href="#login" class="fancybox">Login</a>
+				<a href="#login" class="fancybox login_link">Login</a>
 				<div class="fancybox-hidden" style="display:none">
-					<div id="login" style="width:300px;height:200px">
+					<div id="login">
 						<form name="loginform" id="loginform" action="wp-login.php" method="post">
-						<h2>Already a blogger?</h2>
+						<h2>Already a blogger? Please log in.</h2>
 							<ul>
 								<li><strong>Username:</strong></li>
-								<li><input type="text" name="log" id="log" value="" size="20" tabindex="1" /></li>
+								<li><input type="text" name="log" id="log" value="" size="45" tabindex="1" /></li>
 								<li><strong>Password:</strong></li>
-								<li><input type="password" name="pwd" id="pwd" value="" size="20" tabindex="2" /></li>
+								<li><input type="password" name="pwd" id="pwd" value="" size="45" tabindex="2" /></li>
 								<li><input name="rememberme" type="checkbox" id="rememberme" value="forever" tabindex="3" /> Remember me</li>
-								<li style="text-align: right; margin-right: 8px"><input type="submit" name="submit" id="submitform" value="Login &raquo;" tabindex="4" /></li>
+								<li><input type="submit" name="submit" id="submitform" value="Login" tabindex="4" /><a href="<?php echo site_url('wp-signup.php','login') ?>" class="no_account">Don't have an account?</a></li>
 								<input type="hidden" name="redirect_to" value="'<?php echo $_SERVER["REQUEST_URI"] ?>'" />
 							</ul>
 						</form>
@@ -71,7 +71,12 @@
 				$blogs = get_blogs_of_user($current_user->ID);
 				$username = $current_user->user_login;
 			?>
-				<h2>Hi <?php echo $username; ?>! <span class="logout">(<a href="<?php echo wp_logout_url($_SERVER["REQUEST_URI"]) ?>">Logout</a>)</h2>
+				<div id="logout_text">
+					<ul>
+						<li>Hi <?php echo $username; ?>!</li>
+						<li><span class="logout">(<a href="<?php echo wp_logout_url($_SERVER["REQUEST_URI"]) ?>">Logout</a>)</li>
+					</ul>
+				</div>
 			<?php
 			}
 			?> 

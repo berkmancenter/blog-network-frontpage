@@ -394,3 +394,50 @@ div.gform_footer input[type="submit"]:active {
 .category-news .archive-title {
     text-transform: capitalize;
 }
+
+.login_link {
+    padding-right: 5px;
+    font-size: 14px;
+}
+
+#logout_text {
+    display: inline-block;
+    vertical-align: bottom;
+    padding-bottom: 4px;
+    padding-right: 5px;
+    color: #f5f5e7;
+    font-size: 14px;
+}
+
+#login h2 {
+    padding-bottom: 5px;
+    font-size: 18px;
+}
+
+#login li {
+    padding: 5px 0px;
+}
+
+#login li .no_account{
+    padding-left: 40px;
+    font-size: 12px;
+}
+
+#login input[type="submit"] {
+    color: #333333;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#login input[type="submit"]:hover {
+    background: #333333;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#login input[type="submit"]:active {
+    background: #333333;
+    border: 1px solid #f5f5e7;
+    color: #ffffff;
+    font-weight: bold;
+}
