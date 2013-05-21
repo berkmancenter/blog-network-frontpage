@@ -88,10 +88,12 @@ function network_showcase_handler( $atts ) {
                                 $showcase_html .= ", ";
                             }
                             $first_author = false;
-                            $showcase_html .= "<a href='" . $user->user_url . "'>" . $user->display_name . "</a>";
+                            $showcase_html .= $user->display_name;
                         }
                     $showcase_html .= "</div>";
-                    $showcase_html .= "<div class='showcase_description'>" . get_blog_option($blog, "blogdescription") . "</div>";
+                    if (get_blog_option($blog, "blogdescription") != ""){
+                        $showcase_html .= "<div class='showcase_description'>" . get_blog_option($blog, "blogdescription") . "</div>";
+                    }
                     $showcase_html .= "<div class='showcase_meta'>Created " . date("n/j/Y", strtotime(get_blog_details($blog)->registered)) . "</div>";
                     $showcase_html .= "<div class='showcase_meta'>Last Updated " . date("n/j/Y", strtotime(get_blog_details($blog)->last_updated)) . "</div>";
                 $showcase_html .= "</div></div>";
