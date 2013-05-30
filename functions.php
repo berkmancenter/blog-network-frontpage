@@ -2,6 +2,7 @@
 
 require("includes/showcase.php");
 require("includes/directory.php");
+require("includes/network-search.php");
 
 add_action( 'init', 'register_my_menus' );
 add_action( 'signup_extra_fields', 'registration_text' );
