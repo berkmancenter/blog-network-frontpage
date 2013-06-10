@@ -25,7 +25,8 @@ function network_search_handler( $atts ) {
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
-<gcse:search></gcse:search>
+<div class="gcse-searchbox"></div>
+<div class="gcse-searchresults"></div>
 
 EOT;
 
