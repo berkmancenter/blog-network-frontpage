@@ -53,6 +53,10 @@ function network_ajax_handler(){
             
             echo json_encode($row);
 
+            unset($blogusers);
+            unset($blogusers_string);
+            unset($row);
+
         }
 
     echo ']}';
