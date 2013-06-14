@@ -9,9 +9,61 @@
  *
  */
 
-function network_directory_handler( $atts ) {
+function network_ajax_handler(){
 
     global $wpdb;
+
+    // Get MySQL data
+
+    $blogs = $wpdb->get_col(
+        $wpdb->prepare("SELECT blog_id FROM " . $wpdb->base_prefix . "blogs", array())
+    );
+
+    echo '{"aaData": [';
+
+        $first_item = true;
+
+        foreach ($blogs as $blog){
+
+            if (!$first_item){
+                echo ", ";
+            }
+            else {
+                $first_item = false;
+            }
+
+            $blogusers = get_users(array(
+                'blog_id' => $blog,
+                'role' => 'administrator'
+            ));
+
+            $blogusers_string = "";
+
+            foreach ($blogusers as $user) {
+                $blogusers_string .= "<div>" . $user->display_name . "</div>";
+            }
+
+            $row = array(
+                "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>",
+                "<div class='directory_description' title='" . get_blog_option($blog, "blogdescription") . "'>" . get_blog_option($blog, "blogdescription") . "</div>",
+                $blogusers_string,
+                date("n/j/Y", strtotime(get_blog_details($blog)->registered)),
+                date("n/j/Y", strtotime(get_blog_details($blog)->last_updated))
+            );
+            
+            echo json_encode($row);
+
+        }
+
+    echo ']}';
+
+    die();
+}
+
+add_action('wp_ajax_populate_directory', 'network_ajax_handler');
+add_action('wp_ajax_nopriv_populate_directory', 'network_ajax_handler');
+
+function network_directory_handler( $atts ) {
 
     // Extract attributes
 
@@ -37,6 +89,12 @@ function network_directory_handler( $atts ) {
         array('jquery')
     );
 
+    wp_localize_script(
+        'directory_engine',
+        'ajax_object',
+        array('ajax_url' => admin_url( 'admin-ajax.php' ))
+    );
+
     wp_enqueue_style(
         'directory_css',
         get_stylesheet_directory_uri() . '/includes/directory.css'
@@ -46,12 +104,6 @@ function network_directory_handler( $atts ) {
         'datatables_css',
         get_stylesheet_directory_uri() . '/vendor/datatables/css/jquery.dataTables.css'
     );
-
-    // Get MySQL data
-
-    $blogs = $wpdb->get_col(
-            $wpdb->prepare("SELECT blog_id FROM " . $wpdb->base_prefix . "blogs", array())
-        );
 
     // Construct table HTML
 
@@ -70,23 +122,7 @@ function network_directory_handler( $atts ) {
 
         $dataTable .= "<tbody>";
 
-            foreach ($blogs as $blog){
-
-                $blogusers = get_users(array(
-                    'blog_id' => $blog,
-                    'role' => 'administrator'
-                ));
-
-                $dataTable .= "<tr>";
-                    $dataTable .= "<td>" . "<a href='" . get_blog_details($blog)->path . "'>" . get_blog_option($blog, "blogname") . "</a>" . "</td>";
-                    $dataTable .= "<td><div class='directory_description' title='" . get_blog_option($blog, "blogdescription") . "'>" . get_blog_option($blog, "blogdescription") . "</div></td>";
-                    foreach ($blogusers as $user) {
-                        $dataTable .= "<td>" . "<div>" . $user->display_name . "</div>" . "</td>";
-                    }
-                    $dataTable .= "<td>" . date("n/j/Y", strtotime(get_blog_details($blog)->registered)) . "</td>";
-                    $dataTable .= "<td>" . date("n/j/Y", strtotime(get_blog_details($blog)->last_updated)) . "</td>";
-                $dataTable .= "</tr>";
-            }
+            // populate with AJAX
 
         $dataTable .= "</tbody>";
 
