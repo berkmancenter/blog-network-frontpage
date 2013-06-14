@@ -15,8 +15,10 @@ function network_ajax_handler(){
 
     // Get MySQL data
 
+    // TODO: Limit is for demonstrative purpose only, still need to code long term solution.
+
     $blogs = $wpdb->get_col(
-        $wpdb->prepare("SELECT blog_id FROM " . $wpdb->base_prefix . "blogs", array())
+        $wpdb->prepare("SELECT blog_id FROM " . $wpdb->base_prefix . "blogs LIMIT 50", array())
     );
 
     echo '{"aaData": [';
