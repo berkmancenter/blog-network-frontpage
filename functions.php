@@ -1,7 +1,5 @@
 <?php
 
-require("includes/showcase.php");
-require("includes/directory.php");
 require("includes/network-search.php");
 
 add_action( 'init', 'register_my_menus' );
